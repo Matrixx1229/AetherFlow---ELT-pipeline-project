@@ -29,15 +29,14 @@ services:
   
   elt_script:
     build:
-      context: ./elt
-      dockerfile: Dockerfile
+      context: ./elt # Directory containing the Dockerfile and elt_script.py
+      dockerfile: Dockerfile # Name of the Dockerfile, if it's something other than "Dockerfile", specify here
     command: ["python", "elt_script.py"]
     networks:
       - elt_network
     depends_on:
       - source_postgres
       - destination_postgres
-
 
 networks:
   elt_network:
